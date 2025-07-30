@@ -20,6 +20,7 @@ RUN apt install -y libcunit1-ncurses-dev
 RUN apt install -y ncurses-dev
 RUN apt install -y silversearcher-ag ripgrep
 RUN apt install -y *libsqlite*
+RUN apt install -y tmux
 
 RUN mkdir -p ~/.life
 RUN mkdir -p ~/projects
@@ -33,3 +34,6 @@ RUN cd ~/projects && \
     make install
 RUN rm -rf ~/.emacs.d/
 RUN git clone https://github.com/amirrajan/evil-code-editor.git ~/.emacs.d/
+COPY ./.tmux.conf ~/.tmux.conf
+ENV TERM=xterm-256color
+RUN git clone https://github.com/nvm-sh/nvm.git
